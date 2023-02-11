@@ -4,7 +4,7 @@ const passport = require('passport')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('main/index', { title: 'Express' });
+  res.render('main/landing', { title: 'Home' });
 });
 router.get('/auth/google', passport.authenticate(
   // Which passport strategy is being used?
@@ -16,6 +16,8 @@ router.get('/auth/google', passport.authenticate(
     prompt: "select_account"
   }
 ));
+/* GET character page */
+
 
 router.get('/oauth2callback', passport.authenticate(
   'google',

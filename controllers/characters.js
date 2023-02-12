@@ -4,7 +4,8 @@ module.exports = {
     index,
     new: newCharacter,
     delete: deleteCharacter,
-    show
+    show,
+    create
 }
 
 function index(req, res) {
@@ -31,6 +32,7 @@ function newCharacter(req,res) {
 
 function deleteCharacter(req,res) {
     Character.deleteOne({_id: req.params.id}, (err) => {
+        console.log(req.params.id);
         if (err) {
             res.send(err);
         } else {
@@ -39,6 +41,15 @@ function deleteCharacter(req,res) {
     })
 }
 
-function show(req, res) {
+function create(req, res) {
     res.render('characters/new', {title:"Characters"});
 }
+
+function show(req,res) {
+    Character.findById(req.params.id, (err, character) => {
+        if (err) {
+          res.send(err);
+        } else {
+          res.render('characters/show', { character });
+        }
+})}

@@ -1,0 +1,15 @@
+<%- include('../partials/header') %>
+<h1>Characters Page</h1>
+<ul>
+  <% characters.forEach(character => { %>
+    <li>
+      <p><%= character.name %></p>
+      <form action="/characters/<%= character._id %>?_method=DELETE" method="post">
+        <input type="submit" value="Delete">
+      </form>
+      <a href="/characters/<%= character._id %>">View Details</a>
+    </li>
+  <% }); %>
+</ul>
+<a href="/characters/new">Create New Character</a>
+<%- include('..//partials/footer') %>

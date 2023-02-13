@@ -1,4 +1,6 @@
 const Character = require('../models/characters')
+const user = require('../models/user')
+const User = require('../models/user')
 
 module.exports = {
     index,
@@ -9,7 +11,8 @@ module.exports = {
 }
 
 function index(req, res) {
-    Character.find({}, function(err, characters) {
+    const user = req.user
+    Character.find({user}, function(err, characters) {
         if (err) {
             res.send(err)
         } else {
@@ -18,19 +21,26 @@ function index(req, res) {
 }
 
 function newCharacter(req,res) {
-    const newCharacter = new Character ({
-        name: req.body.name,
-        user: req.user.name
-    });
-    newCharacter.save((err, character) => {
-        if (err) {
-            res.send(err)
-        } else {
-            res.json(character);
-        }
-    });
+    if (req.user) {
+        User.findOne({ googleId: req.user.googleId}, (err, user) => {
+            if (err) {
+                return res.status(500).send({ message: 'Error finding user'});
+            }
+            const character = new Character({
+                name: req.body.name,
+                user: user._id
+            });
+            character.save((err) => {
+                if (err) {
+                    return res.status(500).send({ message: 'Error Saving character'});
+                }
+                res.redirect('/characters')
+            });
+        });
+    } else {
+        res.status(401).send({message: 'Not authorized'});
+    }
 }
-
 function deleteCharacter(req, res, next) {
     // Note the cool "dot" syntax to query for a movie with a
     // review nested within an array

@@ -41,22 +41,15 @@ function newCharacter(req,res) {
         res.status(401).send({message: 'Not authorized'});
     }
 }
-function deleteCharacter(req, res, next) {
-    // Note the cool "dot" syntax to query for a movie with a
-    // review nested within an array
-    Character.findOne({
-      'reviews._id': req.params.id,
-      'reviews.user': req.user._id
-    }).then(function(character) {
-      if (!character) return res.redirect('/characters');
-      character.remove(req.params.id);
-      character.save().then(function() {
-        res.redirect(`/character/${character.id}`);
-      }).catch(function(err) {
-        return next(err);
-      });
+function deleteCharacter(req, res) {
+    Character.findByIdAndDelete(req.params.id, (err) => {
+        if (err) {
+            res.send(err);
+        } else {
+            res.redirect('/characters');
+        }
     });
-  }
+}
 
 function create(req, res) {
     res.render('characters/new', {title:"Characters"});
@@ -67,6 +60,15 @@ function show(req,res) {
         if (err) {
           res.send(err);
         } else {
-          res.render('characters/show', { character, title:character.name });
+            let isUserAuthorized = false;
+            if (req.user && req.user._id.equals(character.user)){
+                isUserAuthorized = true;
+            }
+            res.render('characters/show', {
+                character,
+                title: character.name,
+                isUserAuthorized
+            });
         }
-})}
+})
+}

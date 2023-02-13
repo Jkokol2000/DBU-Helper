@@ -1,3 +1,14 @@
 <%- include('../partials/header') %>
 
+<div class="character-details">
+  <h1><%= character.name %></h1>
+</div>
+
+<% if (isUserAuthorized) { %>
+  <form action="/characters/<%= character._id %>?_method=DELETE" method="POST">
+    <button type="submit">Delete this Character</button>
+  </form>
+  </form>
+<% } %>
+
 <%- include('../partials/footer') %>

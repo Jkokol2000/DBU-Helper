@@ -20,6 +20,7 @@ function index(req, res) {
 function newCharacter(req,res) {
     const newCharacter = new Character ({
         name: req.body.name,
+        user: req.user.name
     });
     newCharacter.save((err, character) => {
         if (err) {
@@ -30,16 +31,22 @@ function newCharacter(req,res) {
     });
 }
 
-function deleteCharacter(req,res) {
-    Character.deleteOne({_id: req.params.id}, (err) => {
-        console.log(req.params.id);
-        if (err) {
-            res.send(err);
-        } else {
-            res.redirect('/characters')
-        }
-    })
-}
+function deleteCharacter(req, res, next) {
+    // Note the cool "dot" syntax to query for a movie with a
+    // review nested within an array
+    Character.findOne({
+      'reviews._id': req.params.id,
+      'reviews.user': req.user._id
+    }).then(function(character) {
+      if (!character) return res.redirect('/characters');
+      character.remove(req.params.id);
+      character.save().then(function() {
+        res.redirect(`/character/${character.id}`);
+      }).catch(function(err) {
+        return next(err);
+      });
+    });
+  }
 
 function create(req, res) {
     res.render('characters/new', {title:"Characters"});
@@ -50,6 +57,6 @@ function show(req,res) {
         if (err) {
           res.send(err);
         } else {
-          res.render('characters/show', { character });
+          res.render('characters/show', { character, title:character.name });
         }
 })}

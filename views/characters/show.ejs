@@ -2,7 +2,7 @@
 
 <div class="character-details">
   <h1><%= character.name %></h1>
-  <p>Race: <%= character.race %></p>
+  <p>Race: <%= character.race.charAt(0).toUpperCase()+character.race.slice(1) %></p>
   <h2>Stats</h2>
   <p>Life Points: <%=character.stats.lifePoints %></p>
   <p>Agility: <%=character.stats.agility %></p>

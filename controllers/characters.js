@@ -114,7 +114,19 @@ function createStats(primaryStat, secondaryStat, tertiaryStat, raceSelection){
 
 function getRace(race) {
     let raceObj = {
-        'Earthling': [4,4,0,0,2,4,0,0],
+        //'template': ["lifePoints", "agility", "force", "tenacity", "Scholarship", "Insight", "Spirit", "Personality"]
+        'android':[4,0,4,4,0,2,0,0],
+        'arcosian':[3,4,2,4,0,0,0,0],
+        "earthlingAgility":[4,4,0,0,2,4,0,0],
+        "earthlingTenacity":[4,0,0,4,2,4,0,0],
+        "majinForce":[3,0,4,2,0,0,0,4],
+        "majinSpirit":[3,0,0,2,0,0,4,4],
+        "namekianForce":[5,0,2,4,0,4,0,0],
+        "namekianSpirit":[5,0,0,4,0,4,2,0],
+        "neotuffle":[4,0,0,4,2,4,0,0],
+        "saiyan":[3,2,4,4,0,0,0,0],
+        "shadowDragonForce":[3,0,4,4,0,0,0,2],
+        "shadowDragonSpirit":[3,0,0,4,0,0,4,2],
         'default': [0,0,0,0,0,0,0,0]
     }
     let raceChoice = raceObj[race] || raceObj['default']

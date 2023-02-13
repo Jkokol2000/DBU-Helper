@@ -1,7 +1,39 @@
 <%- include('../partials/header') %>
 <h1>Create New Character</h1>
 <form action="/characters" method="post">
-  <input type="text" name="name" placeholder="Name">
+  <input type="text" name="name" placeholder="Name"><br>
+  <label>Primary Stat:</label>
+<select id="primary-stat" name="primaryStat">
+  <option value="agility">Agility</option>
+  <option value="force">Force</option>
+  <option value="tenacity">Tenacity</option>
+  <option value="scholarship">Scholarship</option>
+  <option value="insight">Insight</option>
+  <option value="spirit">Spirit</option>
+  <option value="personality">Personality</option>
+</select>
+
+<label>Secondary Stat:</label>
+<select id="secondary-stat" name="secondaryStat">
+  <option value="agility">Agility</option>
+  <option value="force">Force</option>
+  <option value="tenacity">Tenacity</option>
+  <option value="scholarship">Scholarship</option>
+  <option value="insight">Insight</option>
+  <option value="spirit">Spirit</option>
+  <option value="personality">Personality</option>
+</select>
+
+<label>Tertiary Stat:</label>
+<select id="tertiary-stat" name="tertiaryStat">
+  <option value="agility">Agility</option>
+  <option value="force">Force</option>
+  <option value="tenacity">Tenacity</option>
+  <option value="scholarship">Scholarship</option>
+  <option value="insight">Insight</option>
+  <option value="spirit">Spirit</option>
+  <option value="personality">Personality</option>
+</select>
   <input type="submit" value="New">
 </form>
 <%- include('../partials/footer') %>

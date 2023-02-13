@@ -2,7 +2,8 @@
 <h1>Create New Character</h1>
 <form action="/characters" method="post">
   <input type="text" name="name" placeholder="Name"><br>
-  <label>Primary Stat:</label>
+  Select your main attributes
+  <label>Primary Stat (base stat 8):</label>
 <select id="primary-stat" name="primaryStat">
   <option value="agility">Agility</option>
   <option value="force">Force</option>
@@ -13,7 +14,7 @@
   <option value="personality">Personality</option>
 </select>
 
-<label>Secondary Stat:</label>
+<label>Secondary Stat (base stat 6):</label>
 <select id="secondary-stat" name="secondaryStat">
   <option value="agility">Agility</option>
   <option value="force">Force</option>
@@ -24,7 +25,7 @@
   <option value="personality">Personality</option>
 </select>
 
-<label>Tertiary Stat:</label>
+<label>Tertiary Stat (base stat 4):</label>
 <select id="tertiary-stat" name="tertiaryStat">
   <option value="agility">Agility</option>
   <option value="force">Force</option>
@@ -34,6 +35,12 @@
   <option value="spirit">Spirit</option>
   <option value="personality">Personality</option>
 </select>
+<label> Race </label>
+<select id="race-seletion" name="race">
+  <option value="Earthling">Earthling</option>
+</select>
   <input type="submit" value="New">
 </form>
+
+
 <%- include('../partials/footer') %>

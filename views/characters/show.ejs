@@ -2,12 +2,21 @@
 
 <div class="character-details">
   <h1><%= character.name %></h1>
+  <p>Race: <%= character.race %></p>
+  <h2>Stats</h2>
+  <p>Life Points: <%=character.stats.lifePoints %></p>
+  <p>Agility: <%=character.stats.agility %></p>
+  <p>Force: <%=character.stats.force %></p>
+  <p>Tenacity: <%=character.stats.tenacity %></p>
+  <p>Scholarship: <%=character.stats.scholarship %></p>
+  <p>Insight: <%=character.stats.insight %></p>
+  <p>Spirit: <%=character.stats.spirit %></p>
+  <p>Personality: <%=character.stats.personality %></p>
 </div>
 
 <% if (isUserAuthorized) { %>
   <form action="/characters/<%= character._id %>?_method=DELETE" method="POST">
     <button type="submit">Delete this Character</button>
-  </form>
   </form>
 <% } %>
 

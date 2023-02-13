@@ -41,7 +41,8 @@ const characterSchema = new Schema ({
             type: Number,
             default: 2
         }
-    }
+    },
+    race: String
 });
 
  module.exports = mongoose.model('character', characterSchema);

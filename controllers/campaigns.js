@@ -57,14 +57,21 @@ function show(req, res) {
         if (err) {
             res.send(err);
         } else {
-            let isUserAuthorized = false;
-            if (req.user && req.user._id.equals(campaign.user)) {
-                isUserAuthorized = true;
+            let isCreator = false;
+            let isPlayer = false;
+            if (req.user && req.user._id.toString() === campaign.creator.toString()) {
+                isCreator = true;
             }
+            campaign.characters.forEach(character => {
+                if (req.user && req.user._id.toString() === character.user.toString()) {
+                    isPlayer = true;
+                }
+            });
             res.render('campaigns/show', {
                 campaign,
                 title: campaign.name,
-                isUserAuthorized
+                isCreator,
+                isPlayer
             });
         }
     })

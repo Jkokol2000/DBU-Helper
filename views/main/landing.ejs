@@ -1,6 +1,9 @@
 <%- include('../partials/header') %>
 <div class="container"> 
-<div class="Search"><input class="search-input" type="search" placeholder="Search character name or ID"></div>
+<form action="/characters/search" method="GET">
+<div class="Search"><input class="search-input" type="text" name="searchTerm" placeholder="Search character name or ID"></div>
+<button type="submit">Search</button>
+</form>
     <div class="Campaigns"><img class=banner src="/images/outline_fight.jpeg"></div>
     <div class="Characters"><a href="/characters"><img class=banner src="/images/outline_character.jpeg"></a></div>
   </div>

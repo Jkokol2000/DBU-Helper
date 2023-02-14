@@ -1,6 +1,21 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+const commentsSchema = new Schema({
+    content: {
+        type:String,
+        required: true
+    },
+    author:{
+        type:String,
+        required: true
+    },
+    username: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }
+})
+
 const characterSchema = new Schema ({
     name: String,
     user: {
@@ -42,7 +57,8 @@ const characterSchema = new Schema ({
             default: 2
         }
     },
-    race: String
+    race: String,
+    comments: [commentsSchema]
 });
 
  module.exports = mongoose.model('character', characterSchema);

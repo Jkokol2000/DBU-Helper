@@ -1,0 +1,17 @@
+<%- include('../partials/header') %>
+
+<% if (message) { %>
+  <p><%= message %></p>
+<% } else { %>
+  <h2>Search Results</h2>
+
+  <select>
+    <% characters.forEach((character) => { %>
+      <option value="<%= character._id %>">
+        <%= character.name %>
+      </option>
+    <% }); %>
+  </select>
+<% } %>
+
+<%- include('../partials/footer') %>

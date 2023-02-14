@@ -6,7 +6,9 @@ module.exports = {
     new: newCharacter,
     delete: deleteCharacter,
     show,
-    create
+    create,
+    comment,
+    search : searchCharacter
 }
 
 function index(req, res) {
@@ -131,4 +133,34 @@ function getRace(race) {
     }
     let raceChoice = raceObj[race] || raceObj['default']
     return raceChoice
+}
+function comment(req, res) {
+    if (!req.user || !req.user.name) {
+        return res.status(400).send("User not found or missing name");
+    }
+
+    const newComment = { content: req.body.content, author: req.body.name };
+
+    Character.findById(req.params.id, (err, character) => {
+        if (err) {
+            return res.status(400).send("Character not found");
+        }
+
+        if (!character) {
+            return res.status(404).send("Character not found");
+        }
+
+        character.comments.push(newComment);
+        character.save((err) => {
+            if (err) {
+                console.log(err)
+                return res.status(500).send("Failed to save comment");
+            }
+            return res.redirect(`/characters/${character._id}`);
+        });
+    });
+}
+
+function searchCharacter(req, res) {
+    console.log('test');
 }

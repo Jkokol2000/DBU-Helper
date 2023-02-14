@@ -15,10 +15,12 @@ a {
 div {
   border: 1px solid red;
 }
-.banner{
- width: 100%;
- height: 100%;
+
+.banner {
+  width: 100%;
+  height: 100%;
 }
+
 .login {
   display: flex;
   justify-content: center;
@@ -30,7 +32,8 @@ div {
   height: 30px;
 }
 
-.container {  display: grid;
+.container {
+  display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1.5fr 0.5fr 1fr 1fr 1fr 1fr 1fr;
   grid-auto-columns: 1fr;
@@ -46,10 +49,18 @@ div {
     ". . . . . . . .";
 }
 
-.Banner { grid-area: Banner; }
+.Banner {
+  grid-area: Banner;
+}
 
-.Search { grid-area: Search; }
+.Search {
+  grid-area: Search;
+}
 
-.Campaigns { grid-area: Campaigns; }
+.Campaigns {
+  grid-area: Campaigns;
+}
 
-.Characters { grid-area: Characters; }
+.Characters {
+  grid-area: Characters;
+}

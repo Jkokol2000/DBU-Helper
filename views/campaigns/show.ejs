@@ -1,0 +1,36 @@
+<%- include('../partials/header') %>
+
+    <div class="campaign-details">
+        <h1>
+            <%= campaign.name %>
+        </h1>
+        <p>
+            <%= campaign.description %>
+        </p>
+        <h3>Current Characters</h3>
+        <p>
+            <%= campaign.characters %>
+        </p>
+    </div>
+    <% if (userID !== campaign.creator._id.toString()) { %>
+        <form action="/campaigns/<%= campaign._id %>/characters/add" method="POST">
+            <select name="characterId">
+                <% for (var i = 0; i < userCharacters.length; i++) { %>
+                    <option value="<%= userCharacters[i]._id %>">
+                        <%= userCharacters[i].name %>
+                    </option>
+                <% } %>
+            </select>
+            <button type="submit">Add Character</button>
+        </form>
+    <% } %>
+
+
+    <% if (isUserAuthorized) { %>
+        <form action="/campaigns/<%= campaign._id %>?_method=DELETE" method="POST">
+            <button type="submit">Delete this Campaign</button>
+        </form>
+        <% } %>
+    
+
+<%- include('../partials/footer') %>

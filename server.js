@@ -14,6 +14,7 @@ require('./config/passport')
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var charactersRouter = require('./routes/characters')
+var campaignRouter = require('./routes/campaigns')
 
 const { allowedNodeEnvironmentFlags } = require('process');
 
@@ -44,6 +45,7 @@ app.use(function (req,res,next) {
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/', charactersRouter);
+app.use('/', campaignRouter)
 
 
 app.use(express.static(path.join(__dirname, 'public')));

@@ -1,13 +1,15 @@
 <%- include('../partials/header') %>
-<h1>Characters Page</h1>
-<ul>
-  <% characters.forEach(character => { %>
-    <li>
-      <p><%= character.name %></p>
-      </form>
-      <a href="/characters/<%= character._id %>">View Details</a>
-    </li>
-  <% }); %>
-</ul>
-<a href="/characters/new">Create New Character</a>
-<%- include('..//partials/footer') %>
+  <h1>Characters Page</h1>
+  <ul>
+    <% characters.forEach(character=> { %>
+      <li>
+        <p>
+          <%= character.name %>
+        </p>
+        </form>
+        <a href="/characters/<%= character._id %>">View Details</a>
+      </li>
+      <% }); %>
+  </ul>
+  <a href="/characters/new">Create New Character</a>
+  <%- include('../partials/footer') %>

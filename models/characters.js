@@ -3,11 +3,11 @@ const Schema = mongoose.Schema;
 
 const commentsSchema = new Schema({
     content: {
-        type:String,
+        type: String,
         required: true
     },
-    author:{
-        type:String,
+    author: {
+        type: String,
         required: true
     },
     username: {
@@ -16,7 +16,7 @@ const commentsSchema = new Schema({
     }
 })
 
-const characterSchema = new Schema ({
+const characterSchema = new Schema({
     name: String,
     user: {
         type: Schema.Types.ObjectId,
@@ -61,4 +61,4 @@ const characterSchema = new Schema ({
     comments: [commentsSchema]
 });
 
- module.exports = mongoose.model('character', characterSchema);
+module.exports = mongoose.model('character', characterSchema);

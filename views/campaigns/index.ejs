@@ -1,0 +1,15 @@
+<%- include('../partials/header') %>
+    <h1>Campaigns Page</h1>
+    <ul>
+        <% campaigns.forEach(campaigns=> { %>
+            <li>
+                <p>
+                    <%= campaigns.name %>
+                </p>
+                </form>
+                <a href="/campaigns/<%= campaigns._id %>">View Details</a>
+            </li>
+            <% }); %>
+    </ul>
+    <a href="/campaigns/new">Create New Campaigns</a>
+    <%- include('../partials/footer') %>

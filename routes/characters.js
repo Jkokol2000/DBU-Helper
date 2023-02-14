@@ -9,6 +9,5 @@ router.post('/characters', charactersCtrl.new)
 router.get('/characters/:id', charactersCtrl.show)
 router.delete('/characters/:id', charactersCtrl.delete)
 router.post('/characters/:id/comments', charactersCtrl.comment)
-router.get('/search', charactersCtrl.search)
 
 module.exports = router;

@@ -7,5 +7,6 @@ router.get('/campaigns/new', campaignCtrl.create)
 router.post('/campaigns', campaignCtrl.new)
 router.get('/campaigns/:id', campaignCtrl.show)
 router.delete('/campaigns/:id', campaignCtrl.delete)
+router.post('/campaigns/:id/characters', campaignCtrl.addCharacter)
 
 module.exports = router;

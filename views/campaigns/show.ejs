@@ -7,24 +7,26 @@
         <p>
             <%= campaign.description %>
         </p>
-        <h3>Current Characters</h3>
-        <p>
-            <%= campaign.characters %>
+        <ul>Current Characters</ul>
+        <% campaign.characters.forEach(function(character) { %>
+        <li><%= character.name %> - <a href='/characters/<%= character._id %>'>Details</a></li>
+        <%}); %>
         </p>
     </div>
-    <% if (isCreator === false) { %>
-        <form action="/campaign/<%= campaign._id %>/characters/add" method="POST">
+    <% if (isCreator === false && isPlayer === false) { %>
+        <form action="/campaigns/<%= campaign._id %>/characters" method="post">
             <select name="characterId">
-                <% for (var i = 0; i < campaign.characters.length; i++) { %>
-                    <option value="<%= campaign.characters[i]._id %>">
-                        <%= campaigns.characters[i].name %>
-                    </option>
-                <% } %>
+                <% characters.forEach(function(character) { %>
+                    <% if (character.user.equals(currentUser._id) && campaign.characters.includes(character._id) === false) { %>
+                        <option value="<%= character._id %>">
+                            <%= character.name %>
+                        </option>
+                    <% } %>
+                <% }); %>
             </select>
-            <button type="submit">Add Character</button>
+            <input type="submit" value="Add Character">
         </form>
-    <% } %>
-
+<% } %>
 
     <% if (isCreator === true) { %>
         <form action="/campaigns/<%= campaign._id %>?_method=DELETE" method="POST">

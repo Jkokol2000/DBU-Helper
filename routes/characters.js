@@ -10,4 +10,5 @@ router.get('/characters/:id', charactersCtrl.show)
 router.delete('/characters/:id', charactersCtrl.delete)
 router.post('/characters/:id/comments', charactersCtrl.comment)
 
+
 module.exports = router;

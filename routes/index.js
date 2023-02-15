@@ -1,10 +1,14 @@
 var express = require('express');
 var router = express.Router();
-const passport = require('passport')
+const passport = require('passport');
+const ensureLoggedIn = require('../config/ensureLoggedIn');
 
 /* GET home page. */
+router.get('/home', ensureLoggedIn, function (req, res, next) {
+  res.render('main/home', { title: 'Home' });
+});
 router.get('/', function (req, res, next) {
-  res.render('main/landing', { title: 'Home' });
+  res.render('main/landing', { title: 'Welcome!' });
 });
 router.get('/auth/google', passport.authenticate(
   // Which passport strategy is being used?
@@ -22,7 +26,7 @@ router.get('/auth/google', passport.authenticate(
 router.get('/oauth2callback', passport.authenticate(
   'google',
   {
-    successRedirect: '/',
+    successRedirect: '/home',
     failureRedirect: '/'
   }
 ));

@@ -7,7 +7,9 @@ module.exports = {
     delete: deleteCharacter,
     show,
     create,
-    comment
+    comment,
+    update,
+    editPage
 }
 
 function index(req, res) {
@@ -159,4 +161,49 @@ function comment(req, res) {
             return res.redirect(`/characters/${character._id}`);
         });
     });
+}
+
+async function update(req, res) {
+    try {
+        const character = await Character.findById(req.params.id);
+        if (!character) {
+            return res.status(404).send({ message: 'Character not found' });
+        }
+
+        // Only allow the owner of the character to edit it
+        if (!req.user || !req.user._id.equals(character.user)) {
+            return res.status(403).send({ message: 'You are not authorized to edit this character' });
+        }
+
+        const primaryStat = req.body.primaryStat;
+        const secondaryStat = req.body.secondaryStat;
+        const tertiaryStat = req.body.tertiaryStat;
+        const raceSelection = req.body.race;
+
+        if (primaryStat === secondaryStat || secondaryStat === tertiaryStat || tertiaryStat === primaryStat) {
+            return res.status(400).send({ message: 'Error: Primary, Secondary, and Tertiary stats cannot be the same' });
+        }
+
+        const updatedStats = createStats(primaryStat, secondaryStat, tertiaryStat, raceSelection);
+        character.name = req.body.name;
+        character.stats = updatedStats;
+        character.race = raceSelection;
+
+        await character.save();
+
+        res.redirect(`/characters/${req.params.id}`);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ message: 'An error occurred while updating the character' });
+    }
+}
+function editPage(req, res) {
+Character.findById(req.params.id, (err, character) => {
+    if (err) {
+      console.log(err);
+      res.redirect('/characters');
+    } else {
+      res.render('characters/edit', { character: character });
+    }
+  });
 }

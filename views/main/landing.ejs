@@ -1,10 +1,12 @@
 <%- include('../partials/header') %>
 <div class="container"> 
-<form action="/characters/search" method="GET">
-<div class="Search"><input class="search-input" type="text" name="searchTerm" placeholder="Search character name or ID"></div>
-<button type="submit">Search</button>
+<% if (user) { %>
+<form class="Search" action="/characters/search" method="GET">
+<div ><input class="search-input" type="text" name="searchTerm" placeholder="Search character name or ID">
+<button type="submit">Search</button></div>
 </form>
-    <div class="Campaigns"><a href="/campaigns"><img class=banner src="/images/outline_fight.jpeg"></a></div>
-    <div class="Characters"><a href="/characters"><img class=banner src="/images/outline_character.jpeg"></a></div>
+<% } %>
+    <div class="Campaigns"><a href="/campaigns"><img class=locations src="/images/outline_fight.jpeg"></a></div>
+    <div class="Characters"><a href="/characters"><img class=locations src="/images/outline_character.jpeg"></a></div>
   </div>
 <%- include('../partials/footer') %>

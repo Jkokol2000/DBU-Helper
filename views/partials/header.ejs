@@ -5,9 +5,13 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-        <div class="Banner"><a href="/"><img class=banner src="/images/cropped-shenrooooooooon-2.png"></a></div>
+  <div class="banner-container">
+    <div class="Banner"><img src="/images/cropped-shenrooooooooon-2.png"></div>
+  </div>
     <nav>
         <% if (user) { %>
+        <img src="<%= user.avatar%>" alt="Profile Picture" class="user-picture">
+        <span>Welcome, <%= user.name %></span>
         <a href="/logout">LOG OUT</a>
         <% } else { %>
           <a href="/auth/google" class="login">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>

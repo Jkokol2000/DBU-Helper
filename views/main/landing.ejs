@@ -1,3 +1,32 @@
 <%- include('../partials/header') %>
-<p>Test</p>
+<div class="container">
+  <% if (user) { %>
+  <form class="form-inline my-2 my-lg-0" action="/characters/search" method="GET">
+    <input class="form-control mr-sm-2" type="search" name="searchTerm" placeholder="Search character name or ID">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
+  <% } %>
+  <div class="row">
+    <div class="col-md-6 col-lg-4 mb-3 mx-auto">
+      <a href="/campaigns">
+        <div class="card">
+          <img src="/images/outline_fight.jpeg" class="card-img-top" alt="Campaigns">
+          <div class="card-body">
+            <h5 class="card-title">Campaigns</h5>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col-md-6 col-lg-4 mb-3 mx-auto">
+      <a href="/characters">
+        <div class="card">
+          <img src="/images/outline_character.jpeg" class="card-img-top" alt="Characters">
+          <div class="card-body">
+            <h5 class="card-title">Characters</h5>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
 <%- include('../partials/footer') %>

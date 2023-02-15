@@ -9,7 +9,7 @@ router.get('/home', ensureLoggedIn, function (req, res, next) {
 });
 router.get('/', function (req, res, next) {
   if (req.isAuthenticated()) {
-    res.redirect('main/home');
+    res.redirect('/home');
   } else {
   res.render('main/landing', { title: 'Welcome!' });
 }});

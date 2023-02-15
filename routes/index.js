@@ -8,8 +8,11 @@ router.get('/home', ensureLoggedIn, function (req, res, next) {
   res.render('main/home', { title: 'Home' });
 });
 router.get('/', function (req, res, next) {
+  if (req.isAuthenticated()) {
+    res.redirect('main/home');
+  } else {
   res.render('main/landing', { title: 'Welcome!' });
-});
+}});
 router.get('/auth/google', passport.authenticate(
   // Which passport strategy is being used?
   'google',

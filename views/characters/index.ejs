@@ -1,15 +1,18 @@
 <%- include('../partials/header') %>
+<div class="container">
   <h1>Characters Page</h1>
-  <ul>
+  <ul class="list-group">
     <% characters.forEach(character=> { %>
-      <li>
-        <p>
-          <%= character.name %>
-        </p>
-        </form>
-        <a href="/characters/<%= character._id %>">View Details</a>
+      <li class="list-group-item">
+        <div class="d-flex justify-content-between">
+          <p><%= character.name %></p>
+          <a class="btn btn-primary" href="/characters/<%= character._id %>">View Details</a>
+        </div>
       </li>
-      <% }); %>
+    <% }); %>
   </ul>
-  <a href="/characters/new">Create New Character</a>
-  <%- include('../partials/footer') %>
+  <div class="my-3">
+    <a class="btn btn-success" href="/characters/new">Create New Character</a>
+  </div>
+</div>
+<%- include('../partials/footer') %>

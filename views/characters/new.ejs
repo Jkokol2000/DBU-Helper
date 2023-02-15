@@ -1,57 +1,63 @@
 <%- include('../partials/header') %>
-  <h1>Create New Character</h1>
-  <form action="/characters" method="post">
-    <input type="text" name="name" placeholder="Name"><br>
-    Select your main attributes
-    <label>Primary Stat (base stat 8):</label>
-    <select id="primary-stat" name="primaryStat">
-      <option value="agility">Agility</option>
-      <option value="force">Force</option>
-      <option value="tenacity">Tenacity</option>
-      <option value="scholarship">Scholarship</option>
-      <option value="insight">Insight</option>
-      <option value="spirit">Spirit</option>
-      <option value="personality">Personality</option>
-    </select><br>
-
-    <label>Secondary Stat (base stat 6):</label>
-    <select id="secondary-stat" name="secondaryStat">
-      <option value="agility">Agility</option>
-      <option value="force">Force</option>
-      <option value="tenacity">Tenacity</option>
-      <option value="scholarship">Scholarship</option>
-      <option value="insight">Insight</option>
-      <option value="spirit">Spirit</option>
-      <option value="personality">Personality</option>
-    </select><br>
-
-    <label>Tertiary Stat (base stat 4):</label>
-    <select id="tertiary-stat" name="tertiaryStat">
-      <option value="agility">Agility</option>
-      <option value="force">Force</option>
-      <option value="tenacity">Tenacity</option>
-      <option value="scholarship">Scholarship</option>
-      <option value="insight">Insight</option>
-      <option value="spirit">Spirit</option>
-      <option value="personality">Personality</option>
-    </select><br>
-    <label> Race </label>
-    <select id="race-seletion" name="race">
-      <option value="android">Android</option>
-      <option value="arcosian">Arcosian</option>
-      <option value="earthlingAgility">Earthling (increase Agility +4)</option>
-      <option value="earthlingTenacity">Earthling (increase Tenacity +4)</option>
-      <option value="majinForce">Majin (increase Force +4)</option>
-      <option value="majinSpirit">Majin (increase Spirit +4)</option>
-      <option value="namekianForce">Namekian (increase Force +2)</option>
-      <option value="namekianSpirit">Namekian (increase Spirit +2)</option>
-      <option value="neotuffle">Neo-Tuffle</option>
-      <option value="saiyan">Saiyan</option>
-      <option value="shadowDragonForce">Shadow Dragon (increase Force +4)</option>
-      <option value="shadowDragonSpirit">Shadow Dragon (increase Spirit +4)</option>
-    </select><br>
-    <input type="submit" value="New">
-  </form>
-
-
-  <%- include('../partials/footer') %>
+<div class="container">
+  <h1 class="mt-5">Create New Character</h1>
+  <form class="mt-5" action="/characters" method="post">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" name="name" placeholder="Enter name">
+    </div>
+    <div class="form-group">
+      <label for="primary-stat">Primary Stat (base stat 8):</label>
+      <select class="form-control" id="primary-stat" name="primaryStat">
+        <option value="agility">Agility</option>
+        <option value="force">Force</option>
+        <option value="tenacity">Tenacity</option>
+        <option value="scholarship">Scholarship</option>
+        <option value="insight">Insight</option>
+        <option value="spirit">Spirit</option>
+        <option value="personality">Personality</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="secondary-stat">Secondary Stat (base stat 6):</label>
+      <select class="form-control" id="secondary-stat" name="secondaryStat">
+        <option value="agility">Agility</option>
+        <option value="force">Force</option>
+        <option value="tenacity">Tenacity</option>
+        <option value="scholarship">Scholarship</option>
+        <option value="insight">Insight</option>
+        <option value="spirit">Spirit</option>
+        <option value="personality">Personality</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="tertiary-stat">Tertiary Stat (base stat 4):</label>
+      <select class="form-control" id="tertiary-stat" name="tertiaryStat">
+        <option value="agility">Agility</option>
+        <option value="force">Force</option>
+        <option value="tenacity">Tenacity</option>
+        <option value="scholarship">Scholarship</option>
+        <option value="insight">Insight</option>
+        <option value="spirit">Spirit</option>
+        <option value="personality">Personality</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="race-selection">Race</label>
+      <select class="form-control" id="race-selection" name="race">
+        <option value="android">Android</option>
+        <option value="arcosian">Arcosian</option>
+        <option value="earthlingAgility">Earthling (increase Agility +4)</option>
+        <option value="earthlingTenacity">Earthling (increase Tenacity +4)</option>
+        <option value="majinForce">Majin (increase Force +4)</option>
+        <option value="majinSpirit">Majin (increase Spirit +4)</option>
+        <option value="namekianForce">Namekian (increase Force +2)</option>
+        <option value="namekianSpirit">Namekian (increase Spirit +2)</option>
+        <option value="neotuffle">Neo-Tuffle</option>
+        <option value="saiyan">Saiyan</option>
+        <option value="shadowDragonSpirit">Shadow Dragon (increase Force +4)</option>
+        <option value="shadowDragonSpirit">Shadow Dragon (increase Spirit +4)</option>
+      </select>
+    </div>
+</form>
+<%- include('../partials/footer') %>

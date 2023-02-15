@@ -1,15 +1,24 @@
 <%- include('../partials/header') %>
-    <h1>Campaigns Page</h1>
-    <ul>
-        <% campaigns.forEach(campaigns=> { %>
-            <li>
-                <p>
-                    <%= campaigns.name %>
-                </p>
-                </form>
-                <a href="/campaigns/<%= campaigns._id %>">View Details</a>
-            </li>
-            <% }); %>
-    </ul>
-    <a href="/campaigns/new">Create New Campaigns</a>
-    <%- include('../partials/footer') %>
+<div class="container">
+  <h1>Campaigns Page</h1>
+  <div class="row">
+    <div class="col-md-8">
+      <ul class="list-group">
+        <% campaigns.forEach(campaigns => { %>
+        <li class="list-group-item">
+          <div class="d-flex justify-content-between align-items-center">
+            <p><%= campaigns.name %></p>
+            <a href="/campaigns/<%= campaigns._id %>" class="btn btn-primary">View Details</a>
+          </div>
+        </li>
+        <% }); %>
+      </ul>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col-md-8">
+      <a href="/campaigns/new" class="btn btn-success">Create New Campaigns</a>
+    </div>
+  </div>
+</div>
+<%- include('../partials/footer') %>

@@ -1,10 +1,22 @@
 <%- include('../partials/header') %>
 
-<h1>Create New Character</h1>
-  <form action="/campaigns" method="post">
-    <input type="text" name="name" placeholder="Name"><br>
-    <textarea name="description" placeholder="description"></textarea><br>
-    <input type="submit" value="New">
-  </form>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h1>Create New Character</h1>
+      <form action="/campaigns" method="post">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="name" name="name" placeholder="Enter name">
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Create</button>
+      </form>
+    </div>
+  </div>
+</div>
 
 <%- include('../partials/footer') %>

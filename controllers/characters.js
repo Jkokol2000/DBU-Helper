@@ -24,7 +24,7 @@ function index(req, res) {
     })
 }
 
-async function newCharacter(req, res) {
+async function create(req, res) {
     try {
         const user = await User.findOne({ googleId: req.user.googleId });
         // Check if there are any duplicate stats
@@ -65,7 +65,7 @@ function deleteCharacter(req, res) {
     });
 }
 
-function create(req, res) {
+function newCharacter(req, res) {
     res.render('characters/new', { title: "Characters" });
 }
 
@@ -211,6 +211,7 @@ Character.findById(req.params.id, (err, character) => {
 
 function search(req,res) {
     const name = req.query.name;
+    console.log('req.query.name', req.query.name);
     Character.find({ name: new RegExp(name, 'i') }, (err, characters) => {
       if (err) {
         console.error(err);

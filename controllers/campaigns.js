@@ -27,7 +27,7 @@ function index(req, res) {
     })
 }
 // Handler for creating a new campaign
-async function newCampaign(req, res) {
+async function create(req, res) {
     try {
         // Find the authenticated user in the database
         const user = await User.findOne({ googleId: req.user.googleId });
@@ -62,7 +62,7 @@ function deleteCharacter(req, res) {
     });
 }
 // Handler for rendering the page to create a new campaign
-function create(req, res) {
+function newCampaign(req, res) {
     res.render('campaigns/new', { title: "New Campaign" });
 }
 // Handler for rendering the page for a specific campaign

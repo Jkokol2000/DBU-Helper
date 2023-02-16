@@ -1,5 +1,8 @@
+
 const Character = require('../models/character')
 const User = require('../models/user')
+const shortid = require('shortid');
+
 
 module.exports = {
     index,
@@ -42,6 +45,7 @@ async function create(req, res) {
         let generatedStats = createStats(primaryStat, secondaryStat, tertiaryStat, raceSelection)
         const character = new Character({
             name: req.body.name,
+            charID: randID,
             user: user._id,
             stats: generatedStats,
             race: raceSelection
@@ -189,7 +193,6 @@ async function update(req, res) {
         character.name = req.body.name;
         character.stats = updatedStats;
         character.race = raceSelection;
-
         await character.save();
 
         res.redirect(`/characters/${req.params.id}`);
@@ -210,9 +213,9 @@ Character.findById(req.params.id, (err, character) => {
 }
 
 function search(req,res) {
-    const name = req.query.name;
-    console.log('req.query.name', req.query.name);
-    Character.find({ name: new RegExp(name, 'i') }, (err, characters) => {
+    const query = req.query.name;
+    console.log('req.query.name', query);
+    Character.find({ $or:[{ name: new RegExp(query, 'i') },{charID: query}]}, (err, characters) => {
       if (err) {
         console.error(err);
         return res.status(500).send('Internal server error');
@@ -220,6 +223,12 @@ function search(req,res) {
   
       if (characters.length === 1) {
         return res.redirect(`/characters/${characters[0]._id}`);
+      } else {
+        return res.redirect(`/characters`)
       }
     });
+  }
+
+  function randID() {
+    return shortid.generate();
   }

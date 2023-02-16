@@ -1,10 +1,10 @@
 <%- include('../partials/header') %>
 <div class="container">
   <% if (user) { %>
-  <form class="form-inline my-2 my-lg-0" action="/characters/search" method="GET">
-    <input class="form-control mr-sm-2" type="search" name="name" placeholder="Search character name" required>
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-  </form>
+    <form class="form-inline my-3=2 my-lg-0 d-flex justify-content-center" action="/characters/search" method="GET">
+      <input class="form-control mr-sm-2 col-lg-8" type="search" name="name" placeholder="Search character" required>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
   <% } %>
   <div class="row">
     <div class="col-md-6 col-lg-4 mb-3 mx-auto card-container">

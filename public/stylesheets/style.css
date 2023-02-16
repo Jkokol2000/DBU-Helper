@@ -1,13 +1,15 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: #CCCCCC;
 }
 .banner-container {
   width: 100%;
   height: 100px;
 }
 .banner {
-  height: 200px;
+  width: 100%;
+  height: 100px;
 }
 .s-banner {
   height: 140px;
@@ -18,4 +20,21 @@ body {
 }
 .card-img-top {
   height: 600px;
+}
+
+.banner-text {
+  position: absolute;
+  color: white;
+  top:0;
+  font-size: 3rem;
+  text-shadow: 2px 2px #333;
+}
+
+.container-fluid {
+  padding: 0!important
+}
+
+.user-picture {
+  height: 70px;
+  width: 70px;
 }

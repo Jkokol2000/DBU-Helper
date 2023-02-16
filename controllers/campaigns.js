@@ -1,6 +1,6 @@
 // Import the required models
-const Campaign = require('../models/campaigns')
-const Character = require('../models/characters')
+const Campaign = require('../models/campaign')
+const Character = require('../models/character')
 const User = require('../models/user')
 // Export the functions
 module.exports = {

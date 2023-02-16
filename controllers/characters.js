@@ -1,4 +1,4 @@
-const Character = require('../models/characters')
+const Character = require('../models/character')
 const User = require('../models/user')
 
 module.exports = {
@@ -9,7 +9,8 @@ module.exports = {
     create,
     comment,
     update,
-    editPage
+    editPage,
+    search
 }
 
 function index(req, res) {
@@ -207,3 +208,17 @@ Character.findById(req.params.id, (err, character) => {
     }
   });
 }
+
+function search(req,res) {
+    const name = req.query.name;
+    Character.find({ name: new RegExp(name, 'i') }, (err, characters) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).send('Internal server error');
+      }
+  
+      if (characters.length === 1) {
+        return res.redirect(`/characters/${characters[0]._id}`);
+      }
+    });
+  }

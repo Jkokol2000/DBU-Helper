@@ -1,4 +1,18 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+.banner-container {
+  width: 100%;
+  height: 30%
+}
+.banner {
+  height: 30%!important;
+}
 .google-g {
   width: 30px;
   height: 30px;
+}
+a {
+  display: block;
 }

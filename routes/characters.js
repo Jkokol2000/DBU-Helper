@@ -11,6 +11,6 @@ router.delete('/characters/:id',ensureLoggedIn, charactersCtrl.delete)
 router.put('/characters/:id',ensureLoggedIn, charactersCtrl.update);
 router.get('/characters/:id/edit',ensureLoggedIn, charactersCtrl.editPage)
 router.post('/characters/:id/comments',ensureLoggedIn, charactersCtrl.comment)
-
+router.get('/search', ensureLoggedIn, charactersCtrl.search)
 
 module.exports = router;

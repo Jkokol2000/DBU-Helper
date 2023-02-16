@@ -17,7 +17,7 @@ const commentsSchema = new Schema({
 })
 
 const characterSchema = new Schema({
-    name: String,
+    name: {type:String,text:true},
     user: {
         type: Schema.Types.ObjectId,
         ref: 'User',

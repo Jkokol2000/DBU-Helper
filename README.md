@@ -3,22 +3,25 @@ The Dragon Ball Universe Helper is a site designed to help new players get into 
 
 # Screenshot
 
-<img src="url to your image on imgur">
-<img src="url to your image on imgur">
+<img src="https://imgur.com/a/CsnXoMi">
+<img src="https://imgur.com/a/2O84f9B">
 
 # Technologies Used
 
 - JavaScript
+- Embedded Javascript Templating
 - HTML
 - CSS
-- CardStarter CSS Library
+- Node
+- Mongoose
+
 
 # Getting Started
 
-[Click to View Project Planning](your Trello url here)
-[Click to Play Connect Four!](your deployment url here)
+[View my Trello Planning here](https://trello.com/b/MVWD44O3/project-2)
+[Click here to view the Dragon Ball Uinverse Helper!](https://dragonball-universe-helper.herokuapp.com/)
 
 # Next Steps
 
-- Future enhancement one...
-- Future enhancement two... 
+- Allow users who have a campaign to add maps, encounters, and other important objects to their campaigns
+- Add more Details to the Character Sheet Page (Talents, Picture, Backstory, Etc)

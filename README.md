@@ -18,8 +18,8 @@ The Dragon Ball Universe Helper is a site designed to help new players get into 
 
 # Getting Started
 
-[View my Trello Planning here](https://trello.com/b/MVWD44O3/project-2)
-[Click here to view the Dragon Ball Uinverse Helper!](https://dragonball-universe-helper.herokuapp.com/)
+-[View my Trello Planning here](https://trello.com/b/MVWD44O3/project-2)
+- [Click here to view the Dragon Ball Uinverse Helper!](https://dragonball-universe-helper.herokuapp.com/)
 
 # Next Steps
 

@@ -15,20 +15,24 @@ module.exports = {
     editPage,
     search
 }
-
+// Define the function to show all the characters
 function index(req, res) {
     const user = req.user
+    // Find all the characters that belong to the user
     Character.find({ user }, function (err, characters) {
         if (err) {
             res.send(err)
         } else {
+            // Render the index page and pass in the character data
             res.render('characters/index', { title: "Characters", characters })
         }
     })
 }
 
+// Define the function to create a character
 async function create(req, res) {
     try {
+        // Find the user that is creating the character
         const user = await User.findOne({ googleId: req.user.googleId });
         // Check if there are any duplicate stats
         const primaryStat = req.body.primaryStat;
@@ -40,9 +44,9 @@ async function create(req, res) {
             return res.status(400).send({ message: 'Error: Primary, Secondary, and Tertiary stats cannot be the same' });
         }
 
-
-
+        // Generate the stats for the character based on the input data
         let generatedStats = createStats(primaryStat, secondaryStat, tertiaryStat, raceSelection)
+        // Create a new Character object and save it to the database
         const character = new Character({
             name: req.body.name,
             charID: randID(),
@@ -51,6 +55,7 @@ async function create(req, res) {
             race: raceSelection
         });
         await character.save();
+        // Redirect to the index page
         res.redirect('/characters');
     } catch (error) {
         console.error(error);
@@ -58,30 +63,37 @@ async function create(req, res) {
     }
 }
 
-
+// Define the function to delete a character
 function deleteCharacter(req, res) {
+    // Find the character by ID and delete it from the database
     Character.findByIdAndDelete(req.params.id, (err) => {
         if (err) {
             res.send(err);
         } else {
+            // Redirect to the index page
             res.redirect('/characters');
         }
     });
 }
 
+// Define the function to show the page to create a new character
 function newCharacter(req, res) {
     res.render('characters/new', { title: "Characters" });
 }
 
+// Define the function to show a specific character
 function show(req, res) {
+    // Find the character by ID and render the show page
     Character.findById(req.params.id, (err, character) => {
         if (err) {
             res.send(err);
         } else {
             let isUserAuthorized = false;
+            // Check if the current user is authorized to edit the character
             if (req.user && req.user._id.equals(character.user)) {
                 isUserAuthorized = true;
             }
+            // Render the Character's Page
             res.render('characters/show', {
                 character,
                 title: character.name,
@@ -90,16 +102,23 @@ function show(req, res) {
         }
     })
 }
-
+// A function that simulates rolling a number of dice and adding them together,
+// with an optional bonus added to the total.
 function rollDice(numDice, sides, bonus) {
     let result = 0;
     for (let i = 0; i < numDice; i++) {
+        // Generate a random number between 1 and the number of sides on the dice,
+        // and add it to the total.
         result += Math.floor(Math.random() * sides) + 1;
     }
-    return result + bonus
+    // Add the bonus to the total and return the result.
+    return result + bonus;
 }
 
+// A function that creates a new set of character stats based on the selected
+// primary, secondary, and tertiary stats, as well as the selected race.
 function createStats(primaryStat, secondaryStat, tertiaryStat, raceSelection) {
+    // Create a new object to hold the character's stats.
     const characterStats = {
         lifePoints: 0,
         agility: 2,
@@ -110,17 +129,22 @@ function createStats(primaryStat, secondaryStat, tertiaryStat, raceSelection) {
         spirit: 2,
         personality: 2,
     };
+    // Set the values of the primary, secondary, and tertiary stats.
     characterStats[primaryStat] = 8;
     characterStats[secondaryStat] = 6;
     characterStats[tertiaryStat] = 4;
+    // Look up the stat modifiers for the selected race and add them to the character's stats.
     let raceToParse = getRace(raceSelection)
     Object.keys(characterStats).forEach((stat, i) => {
         characterStats[stat] += raceToParse[i];
     });
+    // Roll the character's life points based on their tenacity stat.
     characterStats['lifePoints'] = rollDice(5, 10, characterStats['tenacity']);
-    return characterStats
+    // Return the updated character stats.
+    return characterStats;
 }
 
+// A function that returns the stat modifiers for a given race.
 function getRace(race) {
     let raceObj = {
         //'template': ["lifePoints", "agility", "force", "tenacity", "Scholarship", "Insight", "Spirit", "Personality"]

@@ -72,7 +72,7 @@ async function show(req, res) {
         // Find the specified campaign and populate its characters
         const campaign = await Campaign.findById(req.params.id).populate('characters');
         const characters = await Character.find({ user: req.user._id });
-    
+        // Find if the ID of the current user matches the creator or player within the campaign
         let isCreator = false;
         let isPlayer = false
         if (campaign.creatorID.includes(req.user._id)) {
@@ -84,9 +84,10 @@ async function show(req, res) {
               break;
             }
           }
-        
+        // Render the campaign page
         res.render('campaigns/show', { campaign, characters, currentUser: req.user, isCreator, isPlayer, title: "Campaign" });
       } catch {
+        // Redirect to the Campaign Page
         res.redirect('/campaigns');
       }
     }

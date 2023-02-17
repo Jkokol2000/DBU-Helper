@@ -5,8 +5,8 @@ create new campaigns and add players to their campaign in order to improve the g
 
 # Screenshot
 
-![Main Page Screenshot](https://imgur.com/a/CsnXoMi)
-![Character Page](https://imgur.com/a/2O84f9B)
+!(https://imgur.com/a/CsnXoMi)
+!(https://imgur.com/a/2O84f9B)
 
 # Technologies Used
 

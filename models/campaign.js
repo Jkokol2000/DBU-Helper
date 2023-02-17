@@ -3,7 +3,8 @@ const Schema = mongoose.Schema;
 
 const campaignSchema = new Schema({
     name: String,
-    creator: [{
+    creator: String,
+    creatorID: [{
         type: Schema.Types.ObjectId,
         ref: 'User'
     }],

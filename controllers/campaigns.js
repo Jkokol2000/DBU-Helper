@@ -34,7 +34,8 @@ async function create(req, res) {
         // Create a new Campaign document with the provided information
         const campaign = new Campaign({
             name: req.body.name,
-            creator: user._id,
+            creator: user.name,
+            creatorID: user._id,
             description: req.body.description,
             characters: []
         });
@@ -74,7 +75,7 @@ async function show(req, res) {
     
         let isCreator = false;
         let isPlayer = false
-        if (campaign.creator.includes(req.user._id)) {
+        if (campaign.creatorID.includes(req.user._id)) {
           isCreator = true;
         }
         for (let character of campaign.characters) {

@@ -5,7 +5,8 @@
     <div class="col-md-8">
       <div class="campaign-details">
         <h1><%= campaign.name %></h1>
-        <p><%= campaign.description %></p>
+        <p>Description: <%= campaign.description %></p>
+        <p>Creator: <%= campaign.creator%></p>
         <h2>Current Characters:</h2>
         <ul>
           <% campaign.characters.forEach(function(character) { %>

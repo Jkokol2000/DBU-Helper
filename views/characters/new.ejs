@@ -9,7 +9,7 @@
     <div class="form-group">
       <label for="primary-stat">Primary Stat (base stat 8):</label>
       <select class="form-control" id="primary-stat" name="primaryStat">
-        <option value="agility">Agility</option>
+        <option selected value="agility">Agility</option>
         <option value="force">Force</option>
         <option value="tenacity">Tenacity</option>
         <option value="scholarship">Scholarship</option>
@@ -22,7 +22,7 @@
       <label for="secondary-stat">Secondary Stat (base stat 6):</label>
       <select class="form-control" id="secondary-stat" name="secondaryStat">
         <option value="agility">Agility</option>
-        <option value="force">Force</option>
+        <option selected value="force">Force</option>
         <option value="tenacity">Tenacity</option>
         <option value="scholarship">Scholarship</option>
         <option value="insight">Insight</option>
@@ -35,7 +35,7 @@
       <select class="form-control" id="tertiary-stat" name="tertiaryStat">
         <option value="agility">Agility</option>
         <option value="force">Force</option>
-        <option value="tenacity">Tenacity</option>
+        <option selected value="tenacity">Tenacity</option>
         <option value="scholarship">Scholarship</option>
         <option value="insight">Insight</option>
         <option value="spirit">Spirit</option>
@@ -58,7 +58,30 @@
         <option value="shadowDragonSpirit">Shadow Dragon (increase Force +4)</option>
         <option value="shadowDragonSpirit">Shadow Dragon (increase Spirit +4)</option>
       </select>
-      <button type="submit" class="btn btn-primary">Submit Comment</button>
+      <button type="submit" class="btn btn-primary">Create Character</button>
     </div>
 </form>
+
+<script>
+  // Get references to the form and submit button
+  const form = document.querySelector('form');
+  const submitBtn = document.querySelector('button[type="submit"]');
+
+  // Add an event listener to the form to listen for changes
+  form.addEventListener('change', () => {
+    // Get references to the select elements
+    const primaryStat = document.querySelector('#primary-stat');
+    const secondaryStat = document.querySelector('#secondary-stat');
+    const tertiaryStat = document.querySelector('#tertiary-stat');
+
+    // Check if any of the selected options are the same
+    if (primaryStat.value === secondaryStat.value || primaryStat.value === tertiaryStat.value || secondaryStat.value === tertiaryStat.value) {
+      // Disable the submit button if any of the selected options are the same
+      submitBtn.disabled = true;
+    } else {
+      // Enable the submit button if none of the selected options are the same
+      submitBtn.disabled = false;
+    }
+  });
+</script>
 <%- include('../partials/footer') %>

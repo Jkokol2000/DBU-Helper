@@ -1,7 +1,7 @@
 <%- include('../partials/header') %>
 <div class="container">
   <% if (user) { %>
-    <form class="form-inline my-3=2 my-lg-0 d-flex justify-content-center" action="/characters/search" method="GET">
+    <form class="search-bar form-inline my-3=2 my-lg-0 d-flex justify-content-center" action="/characters/search" method="GET">
       <input class="form-control mr-sm-2 col-lg-8" type="search" name="name" placeholder="Search character" required>
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>

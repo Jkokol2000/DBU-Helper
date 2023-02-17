@@ -1,4 +1,6 @@
 <%- include('../partials/header') %>
+<div class="container">
+  <h1 class="mt-5">Create New Character</h1>
 <form action="/characters/<%= character._id%>?_method=PUT" method="POST">
     <div class="form-group">
       <label for="name">Name</label>
@@ -61,6 +63,6 @@
         <option value="shadowDragonSpirit">Shadow Dragon (increase Spirit +4)</option>
       </select>
     </div><br>
-    <button type="submit" class="btn btn-primary">Submit Comment</button>
+    <button type="submit" class="btn btn-primary">Edit Character</button>
 </form>
 <%- include('../partials/footer') %>

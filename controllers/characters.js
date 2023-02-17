@@ -45,7 +45,7 @@ async function create(req, res) {
         let generatedStats = createStats(primaryStat, secondaryStat, tertiaryStat, raceSelection)
         const character = new Character({
             name: req.body.name,
-            charID: randID,
+            charID: randID(),
             user: user._id,
             stats: generatedStats,
             race: raceSelection
@@ -207,7 +207,7 @@ Character.findById(req.params.id, (err, character) => {
       console.log(err);
       res.redirect('/characters');
     } else {
-      res.render('characters/edit', { character: character });
+      res.render('characters/edit', { character: character, title: character.name });
     }
   });
 }

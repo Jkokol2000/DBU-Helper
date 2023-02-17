@@ -1,6 +1,8 @@
 <%- include('../partials/header') %>
 <div class="container">
   <h1>Characters Page</h1>
+  <div class="row">
+    <div class="col-md-8">
   <ul class="list-group">
     <% characters.forEach(character=> { %>
       <li class="list-group-item">
@@ -13,6 +15,8 @@
   </ul>
   <div class="my-3">
     <a class="btn btn-success" href="/characters/new">Create New Character</a>
+  </div>
+</div>
   </div>
 </div>
 <%- include('../partials/footer') %>
